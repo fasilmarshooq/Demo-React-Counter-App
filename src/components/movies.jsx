@@ -7,6 +7,8 @@ import ListGroup from "./common/listGroup";
 import MoviesTable from "./moviesTable";
 import _ from "lodash";
 import { Link } from "react-router-dom";
+import Input from "./common/input";
+import SearchBox from "./common/searchBox";
 
 class Movies extends Component {
   state = {
@@ -16,6 +18,7 @@ class Movies extends Component {
     currentPage: 1,
     currentGenre: "All",
     sortColumn: { path: "title", order: "asc" },
+    searchText: "",
   };
 
   componentDidMount() {
@@ -43,6 +46,13 @@ class Movies extends Component {
   handleSort = (sortColumn) => {
     this.setState({ sortColumn });
   };
+  handleSearch = (query) => {
+    let { currentGenre, searchText } = this.state;
+    searchText = query;
+    currentGenre = query ? "All" : currentGenre;
+
+    this.setState({ currentGenre, searchText });
+  };
 
   getPageData = () => {
     const {
@@ -51,10 +61,13 @@ class Movies extends Component {
       currentPage,
       pageSize,
       sortColumn,
+      searchText,
     } = this.state;
     const filtered =
       currentGenre === "All"
-        ? movies
+        ? movies.filter((x) =>
+            x.title.toLowerCase().includes(searchText.toLowerCase())
+          )
         : movies.filter((x) => x.genre.name === currentGenre);
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
@@ -64,11 +77,16 @@ class Movies extends Component {
   };
 
   render() {
-    //if (this.state.movies.length === 0) return <p>Fuck No movies!!</p>;
-
-    const { currentGenre, currentPage, genre, sortColumn } = this.state;
+    const {
+      currentGenre,
+      currentPage,
+      genre,
+      sortColumn,
+      searchText,
+    } = this.state;
 
     const { totalCount, data } = this.getPageData();
+
     return (
       <div className="row">
         <div className="col-1.2 m-4">
@@ -91,7 +109,7 @@ class Movies extends Component {
               <p>Available MOvies : {totalCount}</p>
             </span>
           </div>
-
+          <SearchBox value={searchText} onChange={this.handleSearch} />
           <div className="table-responsive m-2">
             <MoviesTable
               movies={data}
