@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Movies from "./components/movies";
 import NavBar from "./components/common/navbar";
 import { GetNavBarItems } from "./Services/fakeNavBarItemService";
@@ -9,6 +10,7 @@ import Rentals from "./components/rentals";
 import NotFound from "./components/notFound";
 import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
+import "react-toastify/dist/ReactToastify.css";
 
 class App extends Component {
   state = {};
@@ -16,6 +18,16 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
+        <ToastContainer
+          position="top-right"
+          autoClose={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+        />
+        ;
         <NavBar items={GetNavBarItems()} />
         <main className="container">
           <Switch>
