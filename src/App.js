@@ -27,7 +27,7 @@ class App extends Component {
           pauseOnFocusLoss
           draggable
         />
-        ;
+
         <NavBar items={GetNavBarItems()} />
         <main className="container">
           <Switch>

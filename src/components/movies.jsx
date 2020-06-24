@@ -7,9 +7,8 @@ import ListGroup from "./common/listGroup";
 import MoviesTable from "./moviesTable";
 import _ from "lodash";
 import { Link } from "react-router-dom";
-import Input from "./common/input";
 import SearchBox from "./common/searchBox";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 class Movies extends Component {
   state = {

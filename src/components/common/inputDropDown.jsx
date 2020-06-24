@@ -3,7 +3,7 @@ import React from "react";
 const InputDropDown = ({ enumValues, label, onChange, value, name, error }) => {
   return (
     <div className="for-group">
-      <label className="m-1" htmlFor="genre">
+      <label className="m-1" htmlFor={name}>
         {label}
       </label>
 
