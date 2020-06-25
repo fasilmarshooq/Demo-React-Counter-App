@@ -1,7 +1,7 @@
 export function GetNavBarItems() {
   const items = [
     { item: "Movies", path: "/movies" },
-    { item: "Customers", path: "/customers" },
+    { item: "upload File", path: "/uploadFile" },
     { item: "Rentals", path: "/rentals" },
     { item: "Register", path: "/register" },
   ];

@@ -5,7 +5,7 @@ import Movies from "./components/movies";
 import NavBar from "./components/common/navbar";
 import { GetNavBarItems } from "./Services/fakeNavBarItemService";
 import MoviesForm from "./components/moviesForm";
-import Customers from "./components/customers";
+import UploadFile from "./components/uploadFile";
 import Rentals from "./components/rentals";
 import NotFound from "./components/notFound";
 import LoginForm from "./components/loginForm";
@@ -35,7 +35,7 @@ class App extends Component {
             <Route path="/register" component={RegisterForm} />
             <Route path="/movies/:Id" component={MoviesForm} />
             <Route path="/movies" component={Movies} />
-            <Route path="/customers" component={Customers} />
+            <Route path="/uploadFile" component={UploadFile} />
             <Route path="/rentals" component={Rentals} />
             <Route path="/not-found" component={NotFound} />
             <Redirect from="/" exact to="/movies" />
